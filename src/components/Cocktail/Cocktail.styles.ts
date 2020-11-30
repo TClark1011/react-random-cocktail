@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 
 const padding = 16;
 
-const pseudoBlack = "#111";
+const pseudoBlack = "#111111";
 
 const width = 300;
 
@@ -71,7 +71,7 @@ export const CocktailIngredientItemPlaceholder = styled(Skeleton)`
 
 export const CocktailIconsContainer = styled.div`
 	position: absolute;
-	bottom: ${padding}px;
+	top: ${padding}px;
 	right: ${padding}px;
 	line-height: 0;
 	cursor: pointer;
@@ -79,10 +79,17 @@ export const CocktailIconsContainer = styled.div`
 `;
 
 export const CocktailIconWrapper = styled.div`
-	fill: #888 !important;
-	transition: fill 0.1s linear;
+	fill: white !important;
+	transition: all 0.1s linear;
+
+	margin-left: ${spacing / 2}px;
+
+	background-color: ${pseudoBlack}aa;
+	border-radius: 50px;
+	padding: ${padding / 2}px;
+	border: 1px solid white;
 
 	&:hover {
-		fill: ${pseudoBlack} !important;
+		background-color: ${pseudoBlack};
 	}
 `;

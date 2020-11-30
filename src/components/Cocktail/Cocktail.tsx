@@ -45,6 +45,9 @@ const Cocktail = ({ ...props }) => {
 	function loadNewCocktail(lookup: number | null = null) {
 		setIsLoading(true);
 		setCocktailData(null);
+		if (!lookup) {
+			window.history.pushState("Random Cocktail", "/", "/");
+		}
 		getCocktail(setCocktailData, lookup);
 	}
 
@@ -86,11 +89,11 @@ const Cocktail = ({ ...props }) => {
 			</CocktailContent>
 			{hasLoaded() && (
 				<CocktailIconsContainer>
-					<CocktailIconWrapper>
-						<Bookmark fill="" onClick={() => setShowModal(true)} />
+					<CocktailIconWrapper onClick={() => setShowModal(true)}>
+						<Bookmark fill="" />
 					</CocktailIconWrapper>
-					<CocktailIconWrapper>
-						<Refresh onClick={() => loadNewCocktail()} fill="" />
+					<CocktailIconWrapper onClick={() => loadNewCocktail()}>
+						<Refresh fill="" />
 					</CocktailIconWrapper>
 				</CocktailIconsContainer>
 			)}

@@ -23,7 +23,7 @@ const GitButton: React.FC = () => {
 				href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css"
 			/>
 			<a
-				href="https://github.com/TClark1011/react-typescript-calculator"
+				href="https://github.com/TClark1011/react-random-cocktail"
 				className="devicon-github-plain"
 				style={iconStyles}
 			></a>
