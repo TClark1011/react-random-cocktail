@@ -26,6 +26,9 @@ export const CocktailContainer = styled.div`
 	font-family: "Jost", sans-serif;
 	line-height: 1.1;
 	font-size: 16px;
+
+	margin-top: 5vh;
+	margin-bottom: 5vh;
 `;
 
 export const CocktailImage = styled.img`
@@ -76,8 +79,6 @@ export const CocktailIconsContainer = styled.div`
 	line-height: 0;
 	cursor: pointer;
 	display: flex;
-	margin-top: 5vh;
-	margin-bottom: 5vh;
 `;
 
 export const CocktailIconWrapper = styled.div`
