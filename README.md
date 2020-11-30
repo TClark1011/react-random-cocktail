@@ -4,4 +4,4 @@ This is a project I made in one day that delivers the user randomly selected Coc
 
 [Live demo](https://cocktails.thomasclark.io/)
 
-![screenshot](https://cocktails.thomasclark.io/screenshot.png)
+![screenshot](https://github.com/TClark1011/react-random-cocktail/blob/main/public/screenshot.PNG)
