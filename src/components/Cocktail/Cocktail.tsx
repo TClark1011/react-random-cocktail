@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from "react";
 
-import getRandomCocktail from "../../services/getRandomCocktail";
-
-import { sentenceCase } from "sentence-case";
-import { titleCase } from "title-case";
+import getCocktail from "../../services/getCocktail";
 
 import Skeleton from "react-loading-skeleton";
+
+import lookupIndex from "../../utils/getLookup";
+
+import BookmarkPrompt from "../BookmarkPrompt";
+
+import {
+	VscRefresh as Refresh,
+	VscBookmark as Bookmark,
+} from "react-icons/vsc";
 
 import {
 	CocktailContainer,
 	CocktailImage,
+	CocktailImageSpacer,
 	CocktailContent,
 	CocktailTitle,
 	CocktailInstructions,
 	CocktailIngredientList,
 	CocktailIngredientItem,
 	CocktailIngredientItemPlaceholder,
-	CocktailIcon,
-	CocktailImageSpacer,
+	CocktailIconsContainer,
+	CocktailIconWrapper,
 } from "./Cocktail.styles";
 
 const Cocktail = ({ ...props }) => {
 	const [cocktailData, setCocktailData] = useState<any>(null);
 	const [isLoading, setIsLoading] = useState<Boolean>(false);
+	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
-		loadNewCocktail();
+		loadNewCocktail(lookupIndex);
 	}, []);
 
 	useEffect(() => {
@@ -34,10 +42,10 @@ const Cocktail = ({ ...props }) => {
 		}
 	}, [cocktailData]);
 
-	function loadNewCocktail() {
+	function loadNewCocktail(lookup: number | null = null) {
 		setIsLoading(true);
 		setCocktailData(null);
-		getRandomCocktail(setCocktailData);
+		getCocktail(setCocktailData, lookup);
 	}
 
 	const hasLoaded = () => !isLoading && cocktailData;
@@ -55,10 +63,10 @@ const Cocktail = ({ ...props }) => {
 			)}
 			<CocktailContent>
 				<CocktailTitle>
-					{hasLoaded() ? titleCase(cocktailData.strDrink) : <Skeleton />}
+					{hasLoaded() ? cocktailData.strDrink : <Skeleton />}
 				</CocktailTitle>
 				<CocktailInstructions>
-					{hasLoaded() ? cocktailData.strInstructions : <Skeleton count={2} />}
+					{hasLoaded() ? cocktailData.strInstructions : <Skeleton count={3} />}
 				</CocktailInstructions>
 				<CocktailIngredientList>
 					{hasLoaded() ? (
@@ -67,7 +75,7 @@ const Cocktail = ({ ...props }) => {
 							const amount = cocktailData[`strMeasure${item + 1}`];
 							return ingredient ? (
 								<CocktailIngredientItem key={item}>
-									{ingredient} {amount}
+									{amount} {ingredient}
 								</CocktailIngredientItem>
 							) : null;
 						})
@@ -76,7 +84,23 @@ const Cocktail = ({ ...props }) => {
 					)}
 				</CocktailIngredientList>
 			</CocktailContent>
-			{hasLoaded() ? <CocktailIcon onClick={loadNewCocktail} /> : null}
+			{hasLoaded() && (
+				<CocktailIconsContainer>
+					<CocktailIconWrapper>
+						<Bookmark fill="" onClick={() => setShowModal(true)} />
+					</CocktailIconWrapper>
+					<CocktailIconWrapper>
+						<Refresh onClick={() => loadNewCocktail()} fill="" />
+					</CocktailIconWrapper>
+				</CocktailIconsContainer>
+			)}
+			{hasLoaded() && (
+				<BookmarkPrompt
+					show={showModal}
+					setShow={setShowModal}
+					index={cocktailData.idDrink}
+				></BookmarkPrompt>
+			)}
 		</CocktailContainer>
 	);
 };

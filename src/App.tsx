@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Cocktail from "./components/Cocktail";
+import GitButton from "./components/GitButton";
 
 const AppContainer = styled.div`
 	min-width: 100%;
@@ -16,6 +17,7 @@ function App() {
 	return (
 		<AppContainer className="App">
 			<Cocktail />
+			<GitButton />
 		</AppContainer>
 	);
 }

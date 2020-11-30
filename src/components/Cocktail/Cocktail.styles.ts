@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { VscRefresh as Refresh } from "react-icons/vsc";
 
 import Skeleton from "react-loading-skeleton";
 
@@ -8,6 +7,8 @@ const padding = 16;
 const pseudoBlack = "#111";
 
 const width = 300;
+
+const spacing = 12;
 
 export const CocktailContainer = styled.div`
 	position: relative;
@@ -22,15 +23,16 @@ export const CocktailContainer = styled.div`
 	color: ${pseudoBlack};
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
-	font-family: sans-serif;
+	font-family: "Jost", sans-serif;
+	line-height: 1.1;
+	font-size: 16px;
 `;
 
 export const CocktailImage = styled.img`
 	width: 100%;
 	min-height: ${width}px;
 `;
-
-export const CocktailImageSpacer = styled(Skeleton)`
+export const CocktailImageSpacer = styled.div`
 	height: ${width - padding + 2}px;
 	margin-bottom: ${padding}px;
 	border-radius: 16px;
@@ -43,36 +45,44 @@ export const CocktailContent = styled.div`
 `;
 
 export const CocktailTitle = styled.h2`
-	margin-top: 0;
-	margin-bottom: 8px;
+	margin-top: 4px;
+	margin-bottom: ${spacing}px;
+	font-family: "Josefin Sans", sans-serif;
+	font-family: 32px;
 `;
 
 export const CocktailInstructions = styled.p`
-	margin-top: 0;
+	margin: 0;
+	margin-bottom: ${spacing}px;
 `;
 
 export const CocktailIngredientList = styled.ul`
 	list-style: none;
 	padding: 0;
-	margin-bottom: 0;
+	margin: 0;
 `;
 
 export const CocktailIngredientItem = styled.li`
 	margin: 0;
 `;
 export const CocktailIngredientItemPlaceholder = styled(Skeleton)`
-	width: 150px !important;
+	width: ${width / 2}px !important;
 `;
 
-export const CocktailIcon = styled(Refresh)`
+export const CocktailIconsContainer = styled.div`
 	position: absolute;
 	bottom: ${padding}px;
 	right: ${padding}px;
 	line-height: 0;
 	cursor: pointer;
-	fill: #888;
+	display: flex;
+`;
+
+export const CocktailIconWrapper = styled.div`
+	fill: #888 !important;
+	transition: fill 0.1s linear;
 
 	&:hover {
-		fill: ${pseudoBlack};
+		fill: ${pseudoBlack} !important;
 	}
 `;
