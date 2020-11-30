@@ -6,7 +6,7 @@ const padding = 16;
 
 const pseudoBlack = "#111111";
 
-const width = 300;
+const width = 350;
 
 const spacing = 12;
 
@@ -76,6 +76,8 @@ export const CocktailIconsContainer = styled.div`
 	line-height: 0;
 	cursor: pointer;
 	display: flex;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
 `;
 
 export const CocktailIconWrapper = styled.div`

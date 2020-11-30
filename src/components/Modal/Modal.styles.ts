@@ -19,7 +19,7 @@ export const ModalRoot = styled.div`
 
 export const ModalCard = styled.div`
 	width: 600px;
-	max-width: 95%;
+	max-width: 95vw;
 	border-radius: 4px;
 	background-color: white;
 	padding: ${padding}px;
